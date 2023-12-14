@@ -1,0 +1,45 @@
+manipulator_type: LR_Mate_200iD_7L
+#*********所有的pose和size单位都是米******************
+# ******这个是在测量机械臂障碍物信息的时候记录的PLC的角度和位移*********
+PLC_angle: 90
+PLC_position: 0
+stage_position_step: [0, -1]
+
+#这个是旋转轴， 理论上旋转轴的x,y坐标要与载台中心的x,y坐标一致
+rotation_axis: [[0.6033025, 0.00249375, 0],[0.6033025, 0.00249375, 1]]
+
+# **********这个是机械臂末端相机的信息，需要实际测量***********
+end_effector:
+  pose_6: [-0.05, 0., 0.095]  # pose_6
+  type: "Box"
+  size: [0.15, 0.18, 0.19]
+  color: "bwr"
+
+
+#*********以下数据为障碍物信息，需要实际测量**************
+
+obstacles:  
+  desktop:  # 大理石桌面
+    pose_b: [0.357, 0, -0.015]
+    type: "Box"
+    size: [1.000, 1.000, 0.03]
+    color: "Reds_r"
+
+
+  foundation1:   # 导轨
+    pose_b: [0.5195, 0, 0.0425]
+    type: "Box"
+    size: [0.275, 0.115, 0.085]
+    color: "Reds_r"
+
+  foundation: # 载台
+    pose_b: [0.606, 0.04, 0.1375]
+    type: "Box"
+    size: [0.07, 0.24, 0.275]
+    color: "Reds_r"
+
+  rooftop:  #
+    pose_b: [0.357, 0, 1.15]
+    type: "Box"
+    size: [1.000, 1.000, 0.03]
+    color: "Reds_r"

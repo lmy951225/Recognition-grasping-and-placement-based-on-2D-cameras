@@ -1,0 +1,29 @@
+PLC_angle: 273.63
+PLC_position: 0.0
+end_effector:
+  color: bwr
+  pose_6: [-0.051, 0.0, 0.091]
+  size: [0.152, 0.18, 0.182]
+  type: Box
+manipulator_type: LR_Mate_200iD_7L
+obstacles:
+  desktop:
+    color: Reds_r
+    pose_b: [0.3575, 0.0, -0.04]
+    size: [1.0, 1.0, 0.08]
+    type: Box
+  foundation:
+    color: Reds_r
+    pose_b: [0.61788, 0.0, 0.14875]
+    size: [0.42876, 0.4, 0.2975]
+    type: Box
+  rooftop:
+    color: Reds_r
+    pose_b: [0.3575, 0.0, 1.15]
+    size: [1.0, 1.0, 0.03]
+    type: Box
+  slide:
+    color: Reds_r
+    pose_b: [0.0, 0.0, 0.0]
+    size: [0.0, 0.0, 0.0]
+    type: Box

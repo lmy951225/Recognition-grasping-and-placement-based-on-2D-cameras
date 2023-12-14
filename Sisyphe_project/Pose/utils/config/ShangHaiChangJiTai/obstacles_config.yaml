@@ -1,0 +1,40 @@
+      
+manipulator_type: LR_Mate_200iD
+
+PLC_angle: 3.6
+PLC_position: 0.6984
+stage_position_step: [0, 1]
+rotation_axis: [[0.42902775,-0.22383875,0],[0.42902775,-0.22383875,1]]
+
+
+end_effector:
+  pose_6: [-0.00, 0., 0.095]
+  type: "Box"
+  size: [0.16, 0.16, 0.19]
+  color: "bwr"
+  
+obstacles:
+  desktop: 
+    pose_b: [0.38, -0.64, -0.08000]
+    type: "Box"
+    size: [1.05, 1.500, 0.16]
+    color: "Reds_r"
+
+  slid: 
+    pose_b: [0.4675, -0.64, 0.094]
+    type: "Box"
+    size: [0.495, 1.500, 0.188]
+    color: "Reds_r"
+
+ 
+  foundation:
+    pose_b: [0.42902775, -0.22383875, 0.1525]
+    type: "Box"
+    size: [0.22, 0.22, 0.305]
+    color: "Reds_r"
+
+  rooftop: 
+    pose_b: [0.38, -0.64, 1.15]    
+    type: "Box"
+    size: [1.05, 1.500, 0.1]
+    color: "Reds_r"

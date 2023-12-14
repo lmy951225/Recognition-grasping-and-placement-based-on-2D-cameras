@@ -1,0 +1,105 @@
+{
+    "CoillisonCheckerThreshA": 0.03,
+    "CoillisonCheckerThreshB": 0.008,
+    "CoillisonCheckerThreshC": 0.008,
+    "DynamicObstacleTypeList": [
+        "Product_mensuo",
+        "RFoundation_mensuo",
+        "TFoundation_001"
+    ],
+    "EndEffectorType": "jiazhua7",
+    "HomeJoints": [
+            0.0,
+            0.0,
+            -20.0,
+            0.0,
+            20.0,
+            -180.0
+    ],
+    "ManipulatorType": "P7A_900",
+    "StaticObstacleTypeList": [
+        "Base_001",
+        "Alarm_001",
+        "Object_shijuedingwei",
+        "Object_zhichengban",
+        "Object_zhijia"
+    ],
+    "angle_sample_frequency": 5,
+    "available_stage_angles": [
+        0.0,
+        360.0
+    ],
+    "available_stage_positions": [
+        0.0,
+        0.0
+    ],
+    "calibration_transformation": [
+        [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+        ],
+        [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+        ],
+        [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+        ],
+        [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+        ]
+    ],
+    "camera2tcp": 92.0,
+    "camera3d_crop_max_z": -320.0,
+    "camera3d_crop_min_z": -430.0,
+    "camera_compensation_x": 0,
+    "camera_compensation_y": 0,
+    "camera_down_in_robot_zero": true,
+    "camera_fov_height": 57.0,
+    "camera_fov_width": 92.0,
+    "collisionCheckerType": "Triangular",
+    "max_trajectory_number": 10,
+    "position_sample_frequency": 1,
+    "registration_stage_design_rotation_axis": [
+        [
+            571.0,
+            0.0,
+            0.0
+        ],
+        [
+            571.0,
+            0.0,
+            1.0
+        ]
+    ],
+    "registration_stage_position": 0.0,
+    "registration_stage_rotation_axis": [
+        [
+            571.407,
+            -1.175,
+            0.0
+        ],
+        [
+            571.407,
+            -1.175,
+            1.0
+        ]
+    ],
+    "stage_position_step": [
+        0.0,
+        0.0
+    ],
+    "virtual_focal_length": 115.85,
+    "working_distance": 190.0,
+    "registration_stage_angle": 94.6579
+}

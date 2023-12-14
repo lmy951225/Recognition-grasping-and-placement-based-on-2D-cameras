@@ -1,0 +1,40 @@
+{
+   "working_distance": 190,
+   "virtual_focal_length": 122.38,
+   "camera_fov_width": 96,
+   "camera_fov_height": 58,
+   "camera2tcp": 90,
+   "calibration_transformation":[
+     [
+        -0.010151953436434269,
+        0.99992728233337402,
+        -0.0065321503207087517,
+        604.75152587890625
+     ],
+     [
+        -0.99992537498474121,
+        -0.010107117705047131,
+        0.0068604443222284317,
+        -13.341884613037109
+     ],
+     [
+        0.0067939236760139465,
+        0.0066013103350996971,
+        0.99995511770248413,
+        650.7802734375
+     ],
+     [ 0, 0, 0, 1 ]
+  ],
+   "camera3d_crop_min_z": -360,
+   "camera3d_crop_max_z": -270,
+   "registration_stage_angle": 355.40,
+   "registration_stage_position": 0,
+   "registration_stage_rotation_axis": [[603.3025, 2.49375, 0],[603.3025, 2.49375, 1]],
+   "stage_position_step": [0, -1],
+
+   "available_stage_angles": [0, 360],
+   "available_stage_positions": [0, 0],
+   "angle_sample_frequency": 7, 
+   "position_sample_frequency": 1, 
+   "max_trajectory_number": 10    
+}

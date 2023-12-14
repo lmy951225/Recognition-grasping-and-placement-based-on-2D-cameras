@@ -1,0 +1,93 @@
+{
+   "working_distance": 190.0,
+   "virtual_focal_length": 122.38,
+   "camera2tcp": 90.0,
+   "camera3d_crop_min_z": -430.0,
+   "camera3d_crop_max_z": -320.0,
+   "registration_stage_rotation_axis": [
+       [
+           603.4135,
+           -0.20875,
+           0
+       ],
+       [
+           603.4135,
+           -0.20875,
+           1
+       ]
+   ],
+   "camera_fov_width": 96.0,
+   "stage_position_step": [
+       0,
+       0
+   ],
+   "camera_fov_height": 58.0,
+   "angle_sample_frequency": 5,
+   "position_sample_frequency": 1,
+   "camera_compensation_x": -4.896,
+   "camera_compensation_y": 1.584,
+   "calibration_transformation": [
+       [
+           0.004809,
+           0.999935,
+           -0.010312,
+           626.164551
+       ],
+       [
+           -0.999944,
+           0.004905,
+           0.009335,
+           -26.775677
+       ],
+       [
+           0.009385,
+           0.010266,
+           0.999903,
+           692.08075
+       ],
+       [
+           0.0,
+           0.0,
+           0.0,
+           1.0
+       ]
+   ],
+   "registration_stage_angle": 87.1,
+   "registration_stage_position": 0.0,
+   "available_stage_angles": [
+       0.0,
+       360.0
+   ],
+   "available_stage_positions": [
+       0.0,
+       0.0
+   ],
+   "registration_stage_design_rotation_axis": [
+       [
+           603.5,
+           0.0,
+           0.0
+       ],
+       [
+           603.5,
+           0.0,
+           1.0
+       ]
+   ],
+
+   "max_trajectory_number": 10,
+   "camera_down_in_robot_zero": false,
+   "HomeJoints":[0.005, 0.012, -20.066, -0.060, 19.940, -180.523],
+
+   "CoillisonCheckerThreshA": 0.030,
+   "CoillisonCheckerThreshB": 0.008,
+   "CoillisonCheckerThreshC": -2,
+
+   
+   "EndEffectorType": "RingLight_002",
+   "ManipulatorType": "LR_Mate_200iD_7L",
+   "StaticObstacleTypeList": ["Base_003","Screen_003", "Alarm_001"],
+   "DynamicObstacleTypeList": ["Product_JAG61-1", "RFoundation_003", "TFoundation_003"],
+   "collisionCheckerType": "Triangular"
+
+}
