@@ -1,0 +1,234 @@
+syntax = "proto3";
+package ControllerServer;
+// V1_1_7
+
+service ControllerServer {
+
+    // 客户端连接服务，使服务端与机械臂通讯
+    rpc connect(ControllerIP) returns (AlgoRes) {}
+
+    // 客户端断开连接服务，使服务端与机械臂断开通讯
+    rpc disConnect(FakeInput) returns (AlgoRes) {}
+
+    // 机械臂清除警报
+    rpc reset(FakeInput) returns (AlgoRes){}
+
+    // 定义机械臂型号
+    rpc setUpRobot(ManipulatorType) returns (AlgoRes) {}
+
+    // 获得当前机械臂运动学模型的机械臂型号名称
+    rpc getName(FakeInput) returns (GetNameReply){}
+
+    // 获取机械臂控制服务算法版本号
+    rpc getServerVersion(FakeInput) returns(GetServerVersionReply){}
+
+    // 机械臂上使能
+    rpc enableRobot(FakeInput) returns (AlgoRes){}
+
+    // 机械臂下使能
+    rpc disableRobot(FakeInput) returns (AlgoRes){}
+
+    // 设置机械臂运行速度比率 0.0~1.0，对于单步移动及轨迹运行均有效
+    rpc setSpeedRatio(SetSpeedRatioRequest) returns (AlgoRes){}
+
+    // 获取当前IO状态，同时支持多路
+    rpc getIO(GetIORequest) returns (GetIOReply){}
+
+    // 设置IO状态，同时支持多路
+    rpc setIO(SetIORequest) returns (SetIOReply){}
+
+    // 获取当前机械臂关节角度，返回单位：rad
+    rpc getJointPosition(FakeInput) returns (GetJointPositionReply){}
+
+    // 获取当前机械臂末端TCP中心位姿，XYZRxRyRz，单位：degree
+    rpc getPose(FakeInput) returns (GetPoseReply){}
+
+    // 根据关节值单步移动，线性插值方式，输入值单位：rad
+    rpc moveJoint(JointPosition) returns (AlgoRes){}
+
+    // 根据机械臂末端TCP中心位姿，实现单步移动，线性插值方式
+    rpc movePose(CartesianPosition) returns (AlgoRes){}
+
+    // 上传飞拍轨迹
+    rpc uploadFlyShotTraj(UploadFlyShotTrajRequest) returns (AlgoRes){}
+
+    // 删除飞拍轨迹
+    rpc deleteFlyShotTraj(DeleteFlyShotTrajRequest) returns (AlgoRes){}
+
+    // 校验飞拍轨迹是否运动学超限、关节超限以及是否碰撞
+    rpc isFlyShotTrajValid(IsFlyShotTrajValidRequest) returns (IsFlyShotTrajValidReply){}
+
+    // 优化轨迹规划时的动力学参数系数
+    rpc optimizeKinematicsParams(OptimizeKinematicsParamsRequest) returns (OptimizeKinematicsParamsReply){}
+
+    // 执行飞拍轨迹
+    rpc executeFlyShotTraj(ExecuteFlyShotTrajRequest) returns (AlgoRes){}
+
+    // 获取机器人程序信息
+    rpc getRobotProgramInfo(GetRobotProgramRequest) returns (GetRobotProgramReply){}
+
+}
+
+message ErrorCode {
+    int64 error_code = 1;                  // 机械臂反馈的错误码, 成功则为0，失败根据具体情况进行反馈
+}
+
+message ResLog{
+    string res_log = 1;                    // 算法执行结果的log输出
+}
+
+message FakeInput{
+    string fake_info = 1;                  // 算法无需输入，该信息不进行处理
+}
+
+message ControllerIP {
+    string controller_ip = 1;              // 机械臂控制器IP
+}
+
+message ManipulatorType {
+    string manipulator_type = 1;          // 机械臂类型
+}
+
+message CartesianPosition {
+    double x = 1;                        // 单位：mm
+    double y = 2;
+    double z = 3;
+    double rx = 4;                      // 单位：deg
+    double ry = 5;
+    double rz = 6;
+}
+
+message JointPosition {
+    double J1 = 1;                     // 单位为rad
+    double J2 = 2;
+    double J3 = 3;
+    double J4 = 4;
+    double J5 = 5;
+    double J6 = 6;
+}
+
+message AlgoRes{
+    ErrorCode  code = 1;                  // 机械臂反馈的错误码, 成功则为0，失败根据具体情况进行反馈
+    ResLog log = 2;                  // 算法执行结果的log输出
+}
+
+message GetNameReply{
+    ErrorCode  code = 1;                  // 机械臂反馈的错误码, 成功则为0，失败根据具体情况进行反馈
+    ResLog log = 2;                  // 算法执行结果的log输出
+    ManipulatorType manipulator_type = 3;          // 机械臂类型
+}
+
+message GetServerVersionReply{
+    ErrorCode  code = 1;                  // 机械臂反馈的错误码, 成功则为0，失败根据具体情况进行反馈
+    ResLog log = 2;                  // 算法执行结果的log输出
+    string controller_version= 3;          // 机械臂控制服务算法版本号
+}
+
+message SetSpeedRatioRequest{
+    float speed_ratio = 1;                // 机械臂执行的速度比率，0.0~1.0之间
+}
+
+message GetIORequest{
+    repeated int32 io_channels = 1;      // 需要获取的IO通道号，支持多通道
+    int32 io_type = 2;         // IO种类，DO/AO/UO
+}
+
+message IOState{
+    int32 io = 1;                        // IO通道名称
+    int32 state = 2;                      // IO状态，要写入的值。 1为On， 0为Off,
+    int32 io_type = 3;                  // IO种类，1:DI, 2:DO, 3:UI, 4:UO,5:RI,6:RO,7:GI,8:GO
+}
+
+message GetIOReply{
+    ErrorCode  code = 1;                  // 机械臂反馈的错误码, 成功则为0，失败根据具体情况进行反馈
+    ResLog log = 2;                  // 算法执行结果的log输出
+    repeated IOState io_states = 3;       // 获取的IO通道状态，支持多通道
+}
+
+message SetIORequest{
+    repeated IOState io_states = 1;       // 获取的IO通道状态，支持多通道
+}
+
+message SetIOReply{
+    ErrorCode  code = 1;                  // 机械臂反馈的错误码, 成功则为0，失败根据具体情况进行反馈
+    ResLog log = 2;                  // 算法执行结果的log输出
+    repeated IOState io_states = 3;       // 获取的IO通道状态，支持多通道
+}
+
+message GetJointPositionReply{
+    ErrorCode  code = 1;                  // 机械臂反馈的错误码, 成功则为0，失败根据具体情况进行反馈
+    ResLog log = 2;                  // 算法执行结果的log输出
+    JointPosition joints = 3;       // 获取的各轴关节值
+}
+
+message GetPoseReply{
+    ErrorCode  code = 1;                  // 机械臂反馈的错误码, 成功则为0，失败根据具体情况进行反馈
+    ResLog log = 2;                  // 算法执行结果的log输出
+    CartesianPosition pose = 3;       // 获取的tcp笛卡尔坐标
+}
+
+message IOAddrs{
+    repeated int32 addrs = 1;         // 单点触发的IO通道
+}
+
+message UploadFlyShotTrajRequest{
+    string name = 1;                        // 轨迹名称
+    repeated JointPosition joints = 2;      // 轨迹路径点关节值
+    repeated bool shot_flags = 3;           // 轨迹路径点是否拍照
+    repeated int32 offset = 4;              // 轨迹点拍照的偏移量，一般 -3~3，表示提前或者滞后触发IO若干个控制周期,捷勃特为1ms
+    repeated IOAddrs traj_addrs = 5;        // 轨迹路径点所对应的IO通道
+}
+
+message DeleteFlyShotTrajRequest{
+    string name = 1;
+}
+
+message kinematicsParams{
+    repeated float joint_vel_coef = 1;      // 轨迹规划时各轴速度的系数
+    repeated float joint_acc_coef = 2;      // 轨迹规划时各轴加速度的系数
+    repeated float joint_jerk_coef = 3;     // 轨迹规划时各轴加加速度的系数
+}
+
+message IsFlyShotTrajValidRequest{
+    string name = 1;                        // 轨迹号名称
+    string method = 2;                      // 轨迹规划算法方案，默认为“TOTP”
+    bool save_traj = 3;                     // 是否输出完整轨迹信息至本地
+    kinematicsParams kinematics_params = 4;     // 轨迹规划时动力学参数系数
+}
+
+message IsFlyShotTrajValidReply{
+    ErrorCode  code = 1;                  // 机械臂反馈的错误码, 成功则为0，失败根据具体情况进行反馈
+    ResLog log = 2;                  // 算法执行结果的log输出
+    string traj_planning_time = 3;
+}
+
+message OptimizeKinematicsParamsRequest{
+    string name = 1;                        // 轨迹号名称
+    string method = 2;                      // 轨迹规划算法方案
+}
+
+message OptimizeKinematicsParamsReply{
+    ErrorCode  code = 1;                  // 机械臂反馈的错误码, 成功则为0，失败根据具体情况进行反馈
+    ResLog log = 2; 
+    kinematicsParams kinematics_params = 3;     // 轨迹规划时动力学参数系数
+    string traj_planning_time = 4;          // 轨迹规划的时间
+}
+
+message ExecuteFlyShotTrajRequest{
+    string name = 1;
+    string method = 2;                      // 轨迹规划算法方案
+    bool move_to_start = 3;                 // 是否移动至轨迹起点
+    bool use_cache = 4;                     // 是否使用缓存，不再重新进行轨迹规划
+    kinematicsParams kinematics_params = 5;     // 轨迹规划时动力学参数系数
+}
+
+message GetRobotProgramRequest{
+    string name = 1;                        // 机器人程序名称
+}
+
+message GetRobotProgramReply{
+    ErrorCode  code = 1;                  // 机械臂反馈的错误码, 成功则为0，失败根据具体情况进行反馈
+    ResLog log = 2;                      // 算法执行结果的log输出
+    repeated JointPosition joints = 3;      // 轨迹路径点关节值
+    repeated CartesianPosition poses = 4;   // 轨迹路径点末端TCP坐标
+}

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=WeiYiRobotController
+Comment=Run Controller
+Exec=/home/adt/RobotSystem/AgilebotController/DockerDeployment/AgilebotController.sh
+Icon=/home/adt/RobotSystem/AgilebotController/DockerDeployment/WeiyiRobotController.jpg
+Type=Application
+Terminal=false
